@@ -24,7 +24,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 TOKEN_CSRF = os.getenv('TOKEN_CSRF')
 if TOKEN_CSRF:
     SECRET_KEY = TOKEN_CSRF
-    CSRF_TRUSTED_ORIGINS = ["https://openflix-django.up.railway.app/"]
+    CSRF_TRUSTED_ORIGINS = ["https://openflix-django.up.railway.app"]
 else:
     SECRET_KEY = "django-insecure-(k9vb@k!w-v2%h+yr+(zuzr_q63@p!$-cid0o#+$6_%#w0p4fpw)"
 
