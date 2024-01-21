@@ -135,12 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-# Verifica se está no ambiente de produção (ou o ambiente desejado para deploy)
-if 'RACK_ENV' in os.environ and os.environ['RACK_ENV'] == 'production':
-    # Em ambiente de produção, desativa a interatividade do collectstatic
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-
 STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"

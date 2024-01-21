@@ -10,7 +10,7 @@ plugins:
       python: '3.10'
     run:
       migrate: 'python manage.py migrate'
-      collectstatic: 'DJANGO_SETTINGS_MODULE=myproject.settings.production python manage.py collectstatic --noinput'
+      collectstatic: 'python manage.py collectstatic --noinput'
 
 env:
   RACK_ENV: production
