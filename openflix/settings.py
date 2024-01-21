@@ -81,6 +81,8 @@ WSGI_APPLICATION = "openflix.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 DATABASES = {
     "default": {
