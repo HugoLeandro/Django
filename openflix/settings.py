@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +21,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-k9vb@k!w-v2%h+yr+(zuzr_q63@p!$-cid0o#+$6_%#w0p4fpw"
+TOKEN_CSRF = os.getenv('TOKEN_CSRF')
+if TOKEN_CSRF:
+    SECRET_KEY = TOKEN_CSRF
+    CSRF_TRUSTED_ORIGINS = ["https://openflix-django.up.railway.app/"]
+else:
+    SECRET_KEY = "django-insecure-(k9vb@k!w-v2%h+yr+(zuzr_q63@p!$-cid0o#+$6_%#w0p4fpw)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://openflix-django.up.railway.app/", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -92,7 +97,7 @@ DATABASES = {
 }
 
 import dj_database_url
-import os
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
