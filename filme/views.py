@@ -1,24 +1,25 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Filme, Usuario
-from .forms import CriarContaForm, FormHomepage
+from .forms import CriarContaForm, FormHomePage
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 # Create your views here.
+# def homepage(request):
+#     return render(request, "homepage.html")
+
 class Homepage(FormView):
     template_name = "homepage.html"
-    form_class = FormHomepage
+    form_class = FormHomePage
 
     def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated: #usuario esta autenticado:
-            # redireciona para a homefilmes
+        if request.user.is_authenticated:
             return redirect('filme:homefilmes')
         else:
-            return super().get(request, *args, **kwargs) # redireciona para a homepage
+            return super().get(request, *args, **kwargs) # redireciona para a a homepage
 
     def get_success_url(self):
-        email = self.request.POST.get("email")
+        email = self.request.POST.get('email')
         usuarios = Usuario.objects.filter(email=email)
         if usuarios:
             return reverse('filme:login')
@@ -26,10 +27,20 @@ class Homepage(FormView):
             return reverse('filme:criarconta')
 
 
+
+# Url - View - Html
+# def homefilmes(request):
+#     context = {}
+#     lista_filmes = Filme.objects.all()
+#     context['lista_filmes'] = lista_filmes
+#     return render(request, "homefilmes.html", context)
+
 class Homefilmes(LoginRequiredMixin, ListView):
     template_name = "homefilmes.html"
     model = Filme
     # object_list -> lista de itens do modelo
+
+
 
 
 class Detalhesfilme(LoginRequiredMixin, DetailView):
@@ -38,7 +49,6 @@ class Detalhesfilme(LoginRequiredMixin, DetailView):
     # object -> 1 item do nosso modelo
 
     def get(self, request, *args, **kwargs):
-        # contabilizar uma visualização
         filme = self.get_object()
         filme.visualizacoes += 1
         filme.save()
@@ -55,11 +65,10 @@ class Detalhesfilme(LoginRequiredMixin, DetailView):
         return context
 
 
-class Pesquisafilme(LoginRequiredMixin, ListView):
+class PesquisaFilme(LoginRequiredMixin, ListView):
     template_name = "pesquisa.html"
     model = Filme
 
-    #object_list
     def get_queryset(self):
         termo_pesquisa = self.request.GET.get('query')
         if termo_pesquisa:
@@ -68,7 +77,6 @@ class Pesquisafilme(LoginRequiredMixin, ListView):
         else:
             return None
 
-
 class Paginaperfil(LoginRequiredMixin, UpdateView):
     template_name = "editarperfil.html"
     model = Usuario
@@ -76,7 +84,6 @@ class Paginaperfil(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('filme:homefilmes')
-
 
 class Criarconta(FormView):
     template_name = "criarconta.html"
@@ -88,13 +95,3 @@ class Criarconta(FormView):
 
     def get_success_url(self):
         return reverse('filme:login')
-
-# def homepage(request):
-#     return render(request, "homepage.html")
-
-# url - view - html
-# def homefilmes(request):
-#     context = {}
-#     lista_filmes = Filme.objects.all()
-#     context['lista_filmes'] = lista_filmes
-#     return render(request, "homefilmes.html", context)

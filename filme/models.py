@@ -4,23 +4,29 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 LISTA_CATEGORIAS = (
-    ("ANALISES", "Análises"),
-    ("PROGRAMACAO", "Programação"),
-    ("APRESENTACAO", "Apresentação"),
+    ("ANIMACAO", "Animação"),
+    ("AVENTURA", "Aventura"),
     ("OUTROS", "Outros"),
+    ("AÇÃO", "Ação"),
+    ("PODCAST", "Pdcast"),
+    ("ROMANCE", "Romance")
+
+
 )
 
 # criar o filme
 class Filme(models.Model):
     titulo = models.CharField(max_length=100)
     thumb = models.ImageField(upload_to='thumb_filmes')
-    descricao = models.TextField(max_length=1000)
+    descricao = models.TextField(max_length=10000)
     categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)
     visualizacoes = models.IntegerField(default=0)
     data_criacao = models.DateTimeField(default=timezone.now)
 
+
     def __str__(self):
         return self.titulo
+
 
 # criar os episodios
 class Episodio(models.Model):
@@ -30,7 +36,6 @@ class Episodio(models.Model):
 
     def __str__(self):
         return self.filme.titulo + " - " + self.titulo
-
 
 class Usuario(AbstractUser):
     filmes_vistos = models.ManyToManyField("Filme")

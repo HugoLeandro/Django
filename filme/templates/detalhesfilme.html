@@ -1,13 +1,92 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}
-HomeFilmes Hashflix
+HomeFilmes Openflix
 {% endblock %}
 
 
+{% block head %}
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #000;
+}
+
+.flex-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  margin: 10px 0;
+
+  .item {
+    padding: 0 2px;
+    transition: all 250ms; /* Usando valor fixo em vez de variável Sass */
+
+    &:hover {
+      margin: 0 40px;
+      transform: scale(1.2);
+    }
+  }
+
+  a {
+    position: absolute;
+    color: #fff;
+    text-decoration: none;
+    font-size: 6em;
+    background: rgb(0, 0, 0);
+    width: 80px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+
+    &:nth-of-type(1) {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    }
+    &:nth-of-type(2) {
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    }
+  }
+}
+
+/* Remove the arrow for Mobile */
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display: none;
+  }
+}
+
+/* Static effect for related movie images */
+.movie_lis img {
+  transition: transform 0.5s;
+}
+
+.movie_lis img:hover {
+  transform: scale(1.1);
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <main class='bg-primary_black min-h-screen w-full'>
-    <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" style="background-image: url('{{ object.thumb.url }}');">
+    <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex  items-end bg-cover bg-black bg-opacity-50 bg-blend-overlay showcase bg-no-repeat" style="background-image: url('{{ object.thumb.url }}');">
         <div>
             <h2 class="text-6xl font-semibold text-white my-4">
                 {{ object.titulo }}
@@ -41,17 +120,23 @@ HomeFilmes Hashflix
             </div>
 
             <div style='margin-top:2rem;margin-bottom:2rem;'>
-                <h2 class="text-gray-200 text-3xl font-medium">
-                    Episódios
-                </h2>
-                {% for episodio in object.episodios.all %}
-                    <h3 class='text-lg'>
-                        <a href="{{ episodio.video }}">
-                            <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
-                        </a>
-                    </h3>
-                {% endfor %}
+                {% if object.episodios.count > 1 %}
+                    <h2 class="text-gray-200 text-3xl font-medium">
+                        Episódios
+                    </h2>
+                    {% for episodio in object.episodios.all %}
+                        <h3 class='text-lg'>
+                            <a href="{{ episodio.video }}">
+                                <p class="text-purple-600">Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
+                            </a>
+                        </h3>
+                    {% endfor %}
+                {% else %}
+                    <section class="flex flex-col md:flex-row items-center border-dark border-b-8"></section>
+                {% endif %}
             </div>
+
+
 
         </div>
     </section>
