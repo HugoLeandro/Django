@@ -39,47 +39,6 @@ section {
       transform: scale(1.2);
     }
   }
-
-  a {
-    position: absolute;
-    color: #fff;
-    text-decoration: none;
-    font-size: 6em;
-    background: rgb(0, 0, 0);
-    width: 80px;
-    padding: 20px;
-    text-align: center;
-    z-index: 1;
-
-    &:nth-of-type(1) {
-      top: 0;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    }
-    &:nth-of-type(2) {
-      top: 0;
-      bottom: 0;
-      right: 0;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    }
-  }
-}
-
-/* Remove the arrow for Mobile */
-@media only screen and (max-width: 600px) {
-  a.arrow__btn {
-    display: none;
-  }
-}
-
-/* Static effect for related movie images */
-.movie_lis img {
-  transition: transform 0.5s;
-}
-
-.movie_lis img:hover {
-  transform: scale(1.1);
 }
 </style>
 {% endblock %}
