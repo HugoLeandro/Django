@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "filme",
     'bootstrap4',
-    'django_bootstrap_icons',
     'crispy_forms',
     'crispy_bootstrap4',
 ]
@@ -133,7 +132,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 
 STATIC_URL = 'static/'
 
