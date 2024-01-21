@@ -127,7 +127,7 @@ section {
                     {% for episodio in object.episodios.all %}
                         <h3 class='text-lg'>
                             <a href="{{ episodio.video }}">
-                                <p class="text-purple-600">Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
+                                <p class="text-red-600">Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
                             </a>
                         </h3>
                     {% endfor %}
