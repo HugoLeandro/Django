@@ -1,0 +1,16 @@
+# railway.yaml
+
+services:
+  - python
+  - postgres
+
+plugins:
+  - name: python
+    build:
+      python: '3.10'
+    run:
+      migrate: 'python manage.py migrate'
+      collectstatic: 'python manage.py collectstatic --noinput'
+
+env:
+  RACK_ENV: production
