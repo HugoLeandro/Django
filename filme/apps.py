@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-
+from .config import EMAIL_ADMIN, SENHA_ADMIN
 
 class FilmeConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
@@ -7,15 +7,7 @@ class FilmeConfig(AppConfig):
 
     def ready(self):
         from .models import Usuario
-        import os
 
-        email = os.getenv("EMAIL_ADMIN")
-        senha = os.getenv("SENHA_ADMIN")
-
-        usuarios = Usuario.objects.filter(email=email)
+        usuarios = Usuario.objects.filter(email=EMAIL_ADMIN)
         if not usuarios:
-            Usuario.objects.create_superuser(username="admin", email=email, password=senha,
-                                             is_active=True, is_staff=True)
-
-
-
+            Usuario.objects.create_superuser(username="admin", email=EMAIL_ADMIN, password=SENHA_ADMIN, is_active=True, is_staff=True)
