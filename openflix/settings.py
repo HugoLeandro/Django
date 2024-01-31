@@ -29,7 +29,7 @@ else:
     SECRET_KEY = "django-insecure-(k9vb@k!w-v2%h+yr+(zuzr_q63@p!$-cid0o#+$6_%#w0p4fpw)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["openflix-django.up.railway.app", "localhost", "127.0.0.1"]
 
