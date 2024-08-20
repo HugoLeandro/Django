@@ -1,6 +1,7 @@
 
 # Clone da Netflix com Django
 Uma plantaforma Stream completa
+Link: https://openflix-django.up.railway.app/
 
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/homepage.png" width=800/>
 
@@ -23,4 +24,3 @@ Na parte administrativa, o adm pode adicionar e remover filmes e episódios. Tam
 ## Login
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/login.png" width=800/>
 
-Link : https://openflix-django.up.railway.app/
