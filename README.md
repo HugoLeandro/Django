@@ -8,7 +8,7 @@ Uma plantaforma Stream completa
 ## Menu de Filmes
 Nesta parte, o filme em destaque fica na parte superior somo sujestão ao usuário:
 
-<img src="https://github.com/HugoLeandro/django/blob/main/imagens/filme.png" width=800/>
+<img src="https://github.com/HugoLeandro/django/blob/main/imagens/filmes.png" width=800/>
 
 ### Três listas de filmes para escolher. Novo, Em Alta e Continuar assistindo
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/filmes2.png" width=800/>
