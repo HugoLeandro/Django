@@ -1,6 +1,7 @@
 
 # Clone da Netflix com Django
 Uma plantaforma Stream completa
+
 Link: https://openflix-django.up.railway.app/
 
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/homepage.png" width=800/>
