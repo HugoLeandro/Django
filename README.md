@@ -22,9 +22,3 @@ Na parte administrativa, o adm pode adicionar e remover filmes e episódios. Tam
 
 ## Login
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/login.png" width=800/>
-
-Erro Quadrático Médio (MSE):
-https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html
-
-- Resultado obitido:
-<img src="https://github.com/HugoLeandro/House-Prices/blob/main/Imagens/resultado-kaggle1.png"/>
