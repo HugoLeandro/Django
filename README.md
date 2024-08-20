@@ -22,3 +22,5 @@ Na parte administrativa, o adm pode adicionar e remover filmes e episódios. Tam
 
 ## Login
 <img src="https://github.com/HugoLeandro/django/blob/main/imagens/login.png" width=800/>
+
+Link : https://openflix-django.up.railway.app/
